@@ -71,7 +71,7 @@ debug_recorder::debug_recorder(Source *src)
                                                                    // self.lpf
   double arb_rate  = (double(system_channel_rate) / resampled_rate);
   double arb_size  = 32;
-  double arb_atten = 100;
+  double arb_atten = 50;
 
 
   // Create a filter that covers the full bandwidth of the output signal

@@ -47,8 +47,8 @@ smartnet_trunking::smartnet_trunking(float               f,
 
   BOOST_LOG_TRIVIAL(info) <<  "Control channel: " << chan_freq;
 
-  inital_lpf_taps  = gr::filter::firdes::low_pass_2(1.0, samp_rate, 96000, 30000, 100, gr::filter::firdes::WIN_HANN);
-  channel_lpf_taps = gr::filter::firdes::low_pass_2(1.0, initial_rate, 7250, 2000, 100, gr::filter::firdes::WIN_HANN);
+  inital_lpf_taps  = gr::filter::firdes::low_pass_2(1.0, samp_rate, 96000, 30000, 50, gr::filter::firdes::WIN_HANN);
+  channel_lpf_taps = gr::filter::firdes::low_pass_2(1.0, initial_rate, 7250, 2000, 50, gr::filter::firdes::WIN_HANN);
   std::vector<gr_complex> dest(inital_lpf_taps.begin(), inital_lpf_taps.end());
 
   prefilter = make_freq_xlating_fft_filter(initial_decim, dest, offset, samp_rate);
@@ -57,7 +57,7 @@ smartnet_trunking::smartnet_trunking(float               f,
 
   double arb_rate  = (double(system_channel_rate) / resampled_rate);
   double arb_size  = 32;
-  double arb_atten = 100;
+  double arb_atten = 50;
 
 
   // Create a filter that covers the full bandwidth of the output signal
