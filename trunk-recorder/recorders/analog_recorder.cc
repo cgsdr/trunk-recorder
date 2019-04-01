@@ -71,9 +71,11 @@ analog_recorder::analog_recorder(Source *src)
   int decim = floor(initial_rate / system_channel_rate);
   double resampled_rate = double(initial_rate) / double(decim);
 
-  inital_lpf_taps  = gr::filter::firdes::low_pass_2(1.0, samp_rate, 96000, 30000, 50, gr::filter::firdes::WIN_HANN);
+  // inital_lpf_taps  = gr::filter::firdes::low_pass_2(1.0, samp_rate, 96000, 30000, 50, gr::filter::firdes::WIN_HANN);
+  inital_lpf_taps  = gr::filter::firdes::low_pass_2(1.0, samp_rate, 200000, 40000, 50, gr::filter::firdes::WIN_HANN);
 //  channel_lpf_taps =  gr::filter::firdes::low_pass_2(1.0, pre_channel_rate, 5000, 2000, 60);
-  channel_lpf_taps =  gr::filter::firdes::low_pass_2(1.0, initial_rate, 4000, 1000, 50);
+  // channel_lpf_taps =  gr::filter::firdes::low_pass_2(1.0, initial_rate, 4000, 1000, 50);
+  channel_lpf_taps =  gr::filter::firdes::low_pass_2(1.0, initial_rate, 40000, 8000, 50);
 
 
   std::vector<gr_complex> dest(inital_lpf_taps.begin(), inital_lpf_taps.end());
