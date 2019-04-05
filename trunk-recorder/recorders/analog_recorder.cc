@@ -80,9 +80,9 @@ analog_recorder::analog_recorder(Source *src)
 
   std::vector<gr_complex> dest(inital_lpf_taps.begin(), inital_lpf_taps.end());
 
-  prefilter = make_freq_xlating_fft_filter(initial_decim, dest, offset, samp_rate);
+  prefilter = make_freq_xlating_fir_filter(initial_decim, dest, offset, samp_rate);
 
-  channel_lpf =  gr::filter::fft_filter_ccf::make(decim, channel_lpf_taps);
+  channel_lpf =  gr::filter::fir_filter_ccf::make(decim, channel_lpf_taps);
 
   double arb_rate  = (double(system_channel_rate) / resampled_rate);
   double arb_size  = 32;

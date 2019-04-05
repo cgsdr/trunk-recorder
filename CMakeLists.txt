@@ -228,6 +228,7 @@ list(APPEND trunk_recorder_sources
   trunk-recorder/talkgroup.cc
   trunk-recorder/talkgroups.cc
   lib/gr_blocks/freq_xlating_fft_filter.cc
+  lib/gr_blocks/freq_xlating_fir_filter.cc
   lib/lfsr/lfsr.cxx
   )
 
