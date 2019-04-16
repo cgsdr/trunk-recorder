@@ -230,6 +230,8 @@ list(APPEND trunk_recorder_sources
   lib/gr_blocks/freq_xlating_fft_filter.cc
   lib/gr_blocks/freq_xlating_fir_filter.cc
   lib/lfsr/lfsr.cxx
+  lib/gr_blocks/cic_filter_ss_impl.cc
+  lib/gr_blocks/cic_wrapper_impl.cc
   )
 
 set_source_files_properties(lib/lfsr/lfsr.cxx COMPILE_FLAGS "-w")
