@@ -43,7 +43,8 @@ class analog_recorder;
 #include "../config.h"
 #include <gr_blocks/nonstop_wavfile_sink.h>
 // #include <gr_blocks/freq_xlating_fft_filter.h>
-#include <gr_blocks/freq_xlating_fir_filter.h>
+// #include <gr_blocks/freq_xlating_fir_filter.h>
+#include <gr_blocks/freq_xlating_cic_filter.h>
 
 
 typedef boost::shared_ptr<analog_recorder>analog_recorder_sptr;
@@ -112,13 +113,14 @@ std::vector<double> d_fbtaps;  /*! Feed back taps. */
   Source *source;
 void calculate_iir_taps(double tau);
   // freq_xlating_fft_filter_sptr prefilter;
-  freq_xlating_fir_filter_sptr prefilter;
+  // freq_xlating_fir_filter_sptr prefilter;
+  freq_xlating_cic_filter_sptr prefilter;
 
   /* GR blocks */
   gr::filter::iir_filter_ffd::sptr deemph;
   gr::filter::fir_filter_fff::sptr sym_filter;
-  // gr::filter::fft_filter_ccf::sptr channel_lpf;
-  gr::filter::fir_filter_ccf::sptr channel_lpf;
+  gr::filter::fft_filter_ccf::sptr channel_lpf;
+  // gr::filter::fir_filter_ccf::sptr channel_lpf;
 
   gr::blocks::multiply_const_ff::sptr levels;
   gr::filter::pfb_arb_resampler_ccf::sptr arb_resampler;
