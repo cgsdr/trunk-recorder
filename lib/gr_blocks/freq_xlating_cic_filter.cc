@@ -15,7 +15,7 @@ void freq_xlating_cic_filter::refresh() {
   const float pi = M_PI; //boost::math::constants::pi<double>();
 
   float phase_inc = (2.0 * pi * this->center_freq) / this->samp_rate;
-  this->rotator->set_phase_inc(-1 * this->decim * phase_inc);
+  this->rotator->set_phase_inc(-1 * phase_inc);
 }
 
 freq_xlating_cic_filter::~freq_xlating_cic_filter() {
